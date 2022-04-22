@@ -8,9 +8,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
+import ru.samsung.itschool.mdev.myapplication.model.Anekdot;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewRow> {
 
-    
+    private ArrayList<Anekdot> arrayList;
+
+    public MyAdapter(ArrayList<Anekdot> arrayList) {
+        this.arrayList = arrayList;
+    }
+
     @NonNull
     @Override
     public ViewRow onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -20,12 +29,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewRow> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewRow holder, int position) {
-
+        holder.tv.setText(arrayList.get(position).getElementPureHtml());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return arrayList.size();
     }
 
     class ViewRow extends RecyclerView.ViewHolder {
